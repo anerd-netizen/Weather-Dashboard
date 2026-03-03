@@ -1,6 +1,8 @@
 # Weather Dashboard 🌦️
 
-A simple, responsive web application that fetches real-time weather data for any city in the world using the OpenWeatherMap API.
+A simple, responsive web application that fetches real-time weather data for any city in the world using the OpenWeatherMap API
+https://anerd-netizen.github.io/Weather-Dashboard/
+
 
 ## 🚀 Features
 - Search for any city to get current weather conditions.
