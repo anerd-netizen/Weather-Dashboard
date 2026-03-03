@@ -1,4 +1,4 @@
-const apiKey = '7d858e11b39e63bc0ee3ce792ce6c65f'; 
+const apiKey = 'e4f68239d3784684dd123c0d5b92e4bd'; 
 
 document.getElementById('searchBtn').addEventListener('click', async () => {
     const city = document.getElementById('cityInput').value;
