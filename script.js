@@ -1,38 +1,31 @@
-// 1. Log to console to verify the script is actually loading
-console.log("Script.js loaded successfully!");
-const apiKey ='f83e18a8cbc9eca42e971178bf67ad1e';
+const apiKey = '7d858e11b39e63bc0ee3ce792ce6c65f'; 
 
 document.getElementById('searchBtn').addEventListener('click', async () => {
     const city = document.getElementById('cityInput').value;
     const weatherResult = document.getElementById('weatherResult');
 
-    // 2. Input Validation
-    if (!city) {
-        alert("Please enter a city name.");
-        return;
-    }
-
     try {
-        // 3. Fetching data using the variable 'apiKey' from config.js
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-        const response = await fetch(url);
-
-        // 4. Handle 404 or other errors
-        if (!response.ok) {
-            throw new Error("City not found or API error.");
-        }
-
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
         const data = await response.json();
 
-        // 5. Update UI
+        // Icon Mapping
+        const iconMap = {
+            'Clouds': 'fa-cloud',
+            'Clear': 'fa-sun',
+            'Rain': 'fa-cloud-rain',
+            'Snow': 'fa-snowflake',
+            'Mist': 'fa-smog'
+        };
+
+        const iconClass = iconMap[data.weather[0].main] || 'fa-cloud-sun';
+
         weatherResult.innerHTML = `
-            <h3>${data.name}</h3>
-            <p>Temperature: ${data.main.temp}°C</p>
-            <p>Weather: ${data.weather[0].description}</p>
+            <i class="fa-solid ${iconClass}" id="weatherIcon"></i>
+            <h2>${data.name}</h2>
+            <h1>${Math.round(data.main.temp)}°C</h1>
+            <p>${data.weather[0].description}</p>
         `;
     } catch (err) {
-        // 6. Display error on the page
-        weatherResult.innerHTML = `<p style="color: red;">${err.message}</p>`;
-        console.error(err);
+        weatherResult.innerHTML = `<p>City not found.</p>`;
     }
 });
