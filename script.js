@@ -18,6 +18,15 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
         }
 
         const data = await response.json();
+
+// Simple check: If the API didn't return a city with a name, it's probably invalid
+if (!data.name) {
+    document.getElementById('weatherResult').innerHTML = "City not found!";
+    return;
+}
+
+// Display the data
+document.getElementById('weatherResult').innerHTML = `...`;
         
         // Success: Update the UI
         document.getElementById('weatherResult').innerHTML = `
@@ -30,4 +39,5 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
         document.getElementById('weatherResult').innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
         console.error(error);
     }
+
 });
