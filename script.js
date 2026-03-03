@@ -1,3 +1,4 @@
+console.log("Script loaded successfully!");
 const apiKey = '87961a08cf77de5c65a8661ee8e1483c'; 
 const api = 'https://api.openweathermap.org/data/2.5/weather';
 
@@ -41,3 +42,4 @@ document.getElementById('weatherResult').innerHTML = `...`;
     }
 
 });
+
