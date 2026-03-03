@@ -1,5 +1,6 @@
 // 1. Log to console to verify the script is actually loading
 console.log("Script.js loaded successfully!");
+const apiKey ='f83e18a8cbc9eca42e971178bf67ad1e';
 
 document.getElementById('searchBtn').addEventListener('click', async () => {
     const city = document.getElementById('cityInput').value;
